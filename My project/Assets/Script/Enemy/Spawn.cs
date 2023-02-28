@@ -39,6 +39,8 @@ public class Spawn : MonoBehaviour
     public void Spawn_Function()
     {
 
+
+
         foreach(GameObject obj in Pooling) 
         {
             if(!obj.activeSelf)

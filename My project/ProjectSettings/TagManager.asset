@@ -7,6 +7,7 @@ TagManager:
   - Map
   - Area
   - Weapon
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 

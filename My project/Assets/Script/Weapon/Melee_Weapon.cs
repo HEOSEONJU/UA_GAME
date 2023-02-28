@@ -8,11 +8,11 @@ public class Melee_Weapon : Base_Weapon
 
 
 
-    public void Init(int D,int P)//-1 무한
+    public void Init(int Level,int P,int K)//-1 무한
     {
-        Damage= D;
+        Current_Damage= Level*Base_Damage;
         Per= P;
-
+        KnockBack_Power= K;
     }
 
 
@@ -22,7 +22,7 @@ public class Melee_Weapon : Base_Weapon
         
             Per--;
         
-            return Damage;
+            return Current_Damage;
         
         
     }

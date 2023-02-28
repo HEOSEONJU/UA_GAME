@@ -5,7 +5,10 @@ using static UnityEditor.SceneView;
 
 public class Player_Manager : MonoBehaviour
 {
+    [SerializeField]
+    public Enemy_Data Data;
     public static Player_Manager instance;
+    
     [SerializeField]
     public Player_Move _Move;
     [SerializeField]
@@ -14,10 +17,14 @@ public class Player_Manager : MonoBehaviour
     public Dir_Char Current_Dir_Char;
     [SerializeField]
     public Player_Status _Status;
-
+    [SerializeField]
+    public Player_Scanner _Scanner;
     [SerializeField]
     Player_Animator _Animator;
-
+    [SerializeField]
+    UI_Manager _UI;
+    public float GameTime=0;
+    public float Max_GameTime = 20*60f;
     private void Awake()
     {
         instance = this;
@@ -30,11 +37,16 @@ public class Player_Manager : MonoBehaviour
         _Status.View_HP();
         Current_Dir_Char =_Move.Return_Dir_Char(_Input.Output_Axis(), Current_Dir_Char);
         _Move.Change_Dir_Char(Current_Dir_Char);
+        _UI.View_UI();
+
+
     }
     private void FixedUpdate()
     {
+        GameTime += Time.fixedDeltaTime;
         _Move.Normal_Move(_Input.Output_Axis());
         _Move.Camera_Move(transform.position);
+        _Scanner.Search();
     }
     private void LateUpdate()
     {

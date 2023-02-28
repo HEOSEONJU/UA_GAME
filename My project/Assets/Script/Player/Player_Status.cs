@@ -6,6 +6,14 @@ using UnityEngine.UI;
 public class Player_Status : MonoBehaviour
 {
     [SerializeField]
+    public int Level = 1;
+    public int exp;
+    public int Kill;
+    public List<int> Next_Exp;
+
+
+
+    [SerializeField]
     float MAX_HP;
     [SerializeField]
     float Current_HP;
@@ -13,6 +21,26 @@ public class Player_Status : MonoBehaviour
     Slider HPSlider;
 
     bool Live = true;
+
+    public void Get_Exp()
+    {
+        Kill++;
+        if (Level== Next_Exp.Count)
+        {
+            return;//최대레벨
+        }
+
+        
+        exp++;
+
+        if (exp == Next_Exp[Level-1])
+        {
+            Level++;
+            exp=0;
+        }
+    }
+
+
     public  void View_HP()
     {
         HPSlider.value=Current_HP/MAX_HP;

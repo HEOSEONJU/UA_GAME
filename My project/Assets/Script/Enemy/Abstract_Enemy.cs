@@ -4,8 +4,9 @@ using UnityEngine;
 
 public abstract class Abstract_Enemy : MonoBehaviour
 {
+    public int  INDEX_ID;
+    
     [SerializeField]
-    protected float MAX_HP;
     protected float Current_HP;
     [SerializeField]
     protected float Damage;
@@ -20,10 +21,11 @@ public abstract class Abstract_Enemy : MonoBehaviour
     protected Collider2D _Collider;
     [SerializeField]
     protected Animator _Animator;
-
+    [SerializeField]
+    protected Vector2 Dir;
 
     abstract public void Trace_Player();
-    abstract public void Damaged(int D);
+    abstract public void Damaged(int D,int K);
 
 
 
